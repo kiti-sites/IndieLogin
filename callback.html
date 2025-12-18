@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
   <meta charset="utf-8">
   <title>logado</title>
 </head>
 <body>
-  <h1>logado 😎</h1>
+  <h1>logado 🎉</h1>
 
   <pre id="out"></pre>
 
   <script>
     const params = new URLSearchParams(location.search)
-    const code = params.get("code")
-    const state = params.get("state")
-
     document.getElementById("out").textContent =
-      "code: " + code + "\nstate: " + state
+      "code = " + params.get("code")
   </script>
 </body>
 </html>
