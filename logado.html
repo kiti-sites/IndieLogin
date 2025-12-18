@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>logado</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #020617;
+      color: #e5e7eb;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .box {
+      background: #020617;
+      border: 1px solid #1e293b;
+      padding: 30px;
+      border-radius: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h1>logado com sucesso 😎</h1>
+    <p id="status"></p>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const code = params.get("code");
+    const error = params.get("error");
+
+    const status = document.getElementById("status");
+
+    if (error) {
+      status.textContent = "deu ruim: " + error;
+    } else if (code) {
+      status.textContent = "code recebido 👉 " + code;
+    } else {
+      status.textContent = "nada pra ver aqui 🤨";
+    }
+  </script>
+
+</body>
+</html>
