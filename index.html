@@ -3,22 +3,29 @@
 <head>
   <meta charset="utf-8">
 
-  <title>kiti indie login</title>
+  <title>kiti login</title>
 
-  <!-- ESSENCIAL -->
+  <!-- OBRIGATÓRIO -->
+  <link rel="client_id" href="https://kiti-indielogin.netlify.app">
+
+  <!-- IndieLogin -->
   <link rel="authorization_endpoint" href="https://indielogin.com/auth">
-  <link rel="token_endpoint" href="https://tokens.indielogin.com/token">
 
   <!-- redirect permitido -->
-  <link rel="redirect_uri" href="https://kiti-indielogin.netlify.app/callback.html">
-
-  <!-- recomendados -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="redirect_uri" href="https://kiti-indielogin.netlify.app/logado.html">
 </head>
+
 <body>
   <h1>kiti indie login</h1>
-  <p>login descentralizado, sem frescura.</p>
 
-  <a href="/login.html">entrar</a>
+  <form method="GET" action="https://indielogin.com/auth">
+    <input type="hidden" name="client_id" value="https://kiti-indielogin.netlify.app">
+    <input type="hidden" name="redirect_uri" value="https://kiti-indielogin.netlify.app/logado.html">
+    <input type="hidden" name="response_type" value="code">
+    <input type="hidden" name="scope" value="profile">
+
+    <input name="me" placeholder="https://usuario.com">
+    <button>logar</button>
+  </form>
 </body>
 </html>
