@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>login indie</title>
+
+  <!-- indielogin magic -->
+  <link rel="authorization_endpoint" href="https://indielogin.com/auth">
+  <link rel="token_endpoint" href="https://tokens.indielogin.com/token">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    form {
+      background: #181818;
+      padding: 20px;
+      border-radius: 12px;
+      width: 300px;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      background: #4ade80;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="loginForm">
+    <h2>login indie 🌱</h2>
+
+    <label>seu domínio</label>
+    <input
+      type="url"
+      name="me"
+      placeholder="https://seusite.com"
+      required
+    >
+
+    <button type="submit">entrar</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("loginForm");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const me = form.me.value;
+
+      const params = new URLSearchParams({
+        me,
+        client_id: location.origin + "/login.html",
+        redirect_uri: location.origin + "/logado.html",
+        response_type: "code",
+        scope: "profile",
+        state: crypto.randomUUID()
+      });
+
+      location.href = "https://indielogin.com/auth?" + params.toString();
+    });
+  </script>
+
+</body>
+</html>
