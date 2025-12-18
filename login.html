@@ -1,30 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
   <meta charset="utf-8">
   <title>login</title>
 </head>
 <body>
-  <h2>entrar com indielogin</h2>
 
-  <form action="https://indielogin.com/auth" method="get">
-    <input type="hidden" name="client_id"
-      value="https://kiti-indielogin.netlify.app">
+<h2>login indie</h2>
 
-    <input type="hidden" name="redirect_uri"
-      value="https://kiti-indielogin.netlify.app/callback.html">
+<form id="loginForm">
+  <input
+    type="url"
+    id="me"
+    placeholder="https://seusite.com"
+    required
+  >
+  <button type="submit">entrar</button>
+</form>
 
-    <input type="hidden" name="response_type" value="code">
-    <input type="hidden" name="scope" value="profile">
-    <input type="hidden" name="state" value="kitiverso">
+<script>
+document.getElementById("loginForm").onsubmit = e => {
+  e.preventDefault()
 
-    <label>
-      seu domínio:
-      <input name="me" placeholder="https://exemplo.com">
-    </label>
+  const me = document.getElementById("me").value
 
-    <br><br>
-    <button type="submit">logar</button>
-  </form>
+  const auth = new URL("https://indielogin.com/auth")
+  auth.searchParams.set("client_id", "https://kiti-indielogin.netlify.app")
+  auth.searchParams.set("redirect_uri", "https://kiti-indielogin.netlify.app/callback.html")
+  auth.searchParams.set("response_type", "code")
+  auth.searchParams.set("scope", "profile")
+  auth.searchParams.set("me", me)
+  auth.searchParams.set("state", crypto.randomUUID())
+
+  window.location = auth.toString()
+}
+</script>
+
 </body>
 </html>
