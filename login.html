@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
   <meta charset="utf-8">
-  <title>login indie</title>
+  <title>login</title>
 </head>
 <body>
-  <h2>login com indielogin</h2>
+  <h2>entrar com indielogin</h2>
 
-  <form method="GET" action="https://indielogin.com/auth">
-    <input type="hidden" name="client_id" value="https://kiti-indielogin.netlify.app">
-    <input type="hidden" name="redirect_uri" value="https://kiti-indielogin.netlify.app/callback.html">
+  <form action="https://indielogin.com/auth" method="get">
+    <input type="hidden" name="client_id"
+      value="https://kiti-indielogin.netlify.app">
+
+    <input type="hidden" name="redirect_uri"
+      value="https://kiti-indielogin.netlify.app/callback.html">
+
     <input type="hidden" name="response_type" value="code">
-    <input type="hidden" name="scope" value="profile email">
-    <input type="hidden" name="state" value="kiti123">
+    <input type="hidden" name="scope" value="profile">
+    <input type="hidden" name="state" value="kitiverso">
 
     <label>
-      seu site:
-      <input name="me" placeholder="https://seusite.com" required>
+      seu domínio:
+      <input name="me" placeholder="https://exemplo.com">
     </label>
 
     <br><br>
-    <button type="submit">entrar</button>
+    <button type="submit">logar</button>
   </form>
 </body>
 </html>
